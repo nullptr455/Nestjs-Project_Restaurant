@@ -17,57 +17,35 @@ const Menu = () => {
   const user = false;
 
   return (
-    <>
-      {/* FIXED MENU BUTTON */}
-      <div className="fixed top-6 right-6 z-[1000]">
-        <button onClick={() => setOpen(!open)}>
-          <Image
-            src={open ? "/close.png" : "/open.png"}
-            alt="Toggle menu"
-            width={24}
-            height={24}
-          />
-        </button>
-      </div>
-
-      {/* FULLSCREEN MENU */}
+    <div>
+      <Image
+        src={open ? "/close.png" : "/open.png"}
+        alt="Toggle menu"
+        width={20}
+        height={20}
+        onClick={() => setOpen(!open)}
+        className="cursor-pointer"
+      />
       {open && (
-        <div className="fixed left-0 top-24 w-full h-[calc(100vh-6rem)] bg-red-500 text-white flex flex-col gap-8 items-center justify-center text-3xl z-[999]">
+        <div className="bg-red-500 text-white  absolute left-0 top-24 w-full h-[calc(100vh-6rem)] flex flex-col gap-8 items-center justify-center text-3xl z-10">
           {links.map((item) => (
-            <Link
-              href={item.url}
-              key={item.id}
-              onClick={() => setOpen(false)}
-              className="hover:text-yellow-300 transition"
-            >
+            <Link href={item.url} key={item.id} onClick={() => setOpen(false)}>
               {item.title}
             </Link>
           ))}
 
-          {!user ? (
-            <Link
-              href="/login"
-              onClick={() => setOpen(false)}
-              className="hover:text-yellow-300 transition"
-            >
-              Login
-            </Link>
-          ) : (
-            <Link
-              href="/order"
-              onClick={() => setOpen(false)}
-              className="hover:text-yellow-300 transition"
-            >
-              Order
-            </Link>
-          )}
-
+          <Link
+            href={user ? "/orders" : "login"}
+            onClick={() => setOpen(false)}
+          >
+            {user ? "Orders" : "Login"}
+          </Link>
           <Link href="/cart" onClick={() => setOpen(false)}>
             <CartIcon />
           </Link>
         </div>
       )}
-    </>
+    </div>
   );
 };
 
