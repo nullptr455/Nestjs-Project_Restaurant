@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import CountDown from "./CountDown";
 const Offer = () => {
   return (
     <div className="bg-black h-screen flex flex-col md:flex-row">
@@ -12,7 +13,10 @@ const Offer = () => {
           Progressively simplify effective e-toilers and process-centric methods
           of empowerment. Quickly pontificate parallel.
         </p>
-        <button>Order Now</button>
+        <CountDown />
+        <button className="bg-red-500 text-white rounded-md py-3 px-6 cursor-pointer">
+          Order Now
+        </button>
       </div>
       {/* image container */}
       <div className="flex-1 w-full relative">
